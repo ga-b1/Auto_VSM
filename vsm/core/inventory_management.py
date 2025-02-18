@@ -11,9 +11,8 @@ class Inventaire:
             self.products[produit] = 0
 
     def add(self, produit: Produit, qte: int):
-        # Ajoute la quantité qte au produit (initialise si nécessaire).
         if produit not in self.products:
-            self.add_product(produit)
+            raise KeyError(f"Le produit {produit} n'existe pas dans l'inventaire.")
         self.products[produit] += qte
 
     def remove(self, produit: Produit, qte: int):
