@@ -2,3 +2,4 @@
 logs/
 log/
 l
+*/__pycache__/*
