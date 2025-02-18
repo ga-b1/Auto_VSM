@@ -1,0 +1,7 @@
+[2025-02-12 19:12:17] [DEBUG] Ceci est un message de DEBUG pour le suivi interne.
+[2025-02-12 19:12:17] [INFO] Information utile pour l'utilisateur.
+[2025-02-12 19:12:17] [WARNING] Attention : vérifiez les paramètres de configuration!
+[2025-02-12 19:12:17] [ERROR] Erreur critique détectée, veuillez intervenir immédiatement.
+[2025-02-12 19:12:17] [INFO] Démarrage d'un processus simulé (mode classique)...
+[2025-02-12 19:12:19] [INFO] Processus simulé terminé.
+[2025-02-12 19:12:19] [INFO] Démarrage d'un phénomène réel simulé...
