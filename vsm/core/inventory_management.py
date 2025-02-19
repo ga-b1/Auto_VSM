@@ -91,7 +91,8 @@ if __name__ == "__main__":
     print(inv)
     inv.remove(prod, 4)
     print(inv)
-
+    inv.remove(prod, 6)
+    
     inv.delete_product(prod)
     print(inv)
     
