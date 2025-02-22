@@ -39,10 +39,6 @@ class Inventaire:
     def can_delede(self, produit: Produit) -> bool:
         # Retourne True si la quantité du produit est 0.
         return self.products.get(produit, 0) == 0
-    
-    def set_product(self, produit: Produit):
-        # Ajoute le produit à l'inventaire avec une quantité de 0.
-        self.products[produit] = 0
         
     def get_products(self) -> dict[Produit, int]:
         # Retourne une copie du dictionnaire de produits.

@@ -74,24 +74,7 @@ class Facory_Process(Process):
     
     
     
-    
-    
-    
-    
-    
-    
 
-    def add_product_prod(self, produit: Produit, qte: int) -> None:
-        if produit in self.prod:
-            raise ValueError(f"Le produit {produit} est déjà dans la liste de production.")
-        self.prod[produit] = qte
-        self.inventaire_bdl.set_product(produit)
-    
-    def add_product_need(self, produit: Produit, qte: int):
-        if produit in self.need:
-            raise ValueError(f"Le produit {produit} est déjà dans la liste de besoins.")
-        self.need[produit] = qte
-        self.inventaire_bdl.set_product(produit)
     
     def can_process(self) -> bool:
         for produit, quantite in self.need.items():
