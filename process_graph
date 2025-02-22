@@ -1,0 +1,17 @@
+digraph ProcessGraph {
+    rankdir=LR;
+    node [style=filled, fillcolor=lightblue];
+    "Process1" [label="Process1", shape=triangle];
+    "Process2" [label="Process2", shape=box];
+    "Process3" [label="Process3", shape=box];
+    "Process4" [label="Process4", shape=box];
+    "Process5" [label="Process5", shape=box];
+    "Process6" [label="Process6", shape=box];
+    "Process1" -> "Process2";
+    "Process1" -> "Process3";
+    "Process1" -> "Process6";
+    "Process2" -> "Process4";
+    "Process3" -> "Process4";
+    "Process6" -> "Process5";
+    "Process4" -> "Process5";
+}

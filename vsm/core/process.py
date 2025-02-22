@@ -4,48 +4,63 @@ from product_mangement import Produit
 
 
 class Process:
-    """Permet de creer un process qui est la base pour factory_process et storage_process
-    """
+    """Permet de créer un process qui est la base pour factory_process et storage_process."""
     
-    def __init__(self):
+    def __init__(self, name: str = "Process"):
+        self.name = name                # nouvel attribut pour le nom
         self.inventaire_bdl = Inventaire()
         
-    def setup_inventory(self,produit : Produit):
+    def setup_inventory(self, produit: Produit):
         self.inventaire_bdl.add_product(produit)
  
-    def add_product(self,produit : Produit):
+    def add_product(self, produit: Produit):
         self.inventaire_bdl.add_product(produit)
         
-    def add(self,produit : Produit, qte : int):
-        self.inventaire_bdl.add(produit,qte)
+    def add(self, produit: Produit, qte: int):
+        self.inventaire_bdl.add(produit, qte)
         
-    def remove(self,produit : Produit, qte : int):
-        self.inventaire_bdl.remove(produit,qte)
+    def remove(self, produit: Produit, qte: int):
+        self.inventaire_bdl.remove(produit, qte)
         
-    def delete_product(self,produit : Produit):
+    def delete_product(self, produit: Produit):
         self.inventaire_bdl.delete_product(produit)
         
-    def is_empty(self,produit : Produit) -> bool:
+    def is_empty(self, produit: Produit) -> bool:
         return self.inventaire_bdl.is_empty(produit)
     
-    def get_quantity(self,produit : Produit) -> int:
+    def get_quantity(self, produit: Produit) -> int:
         return self.inventaire_bdl.get_quantity(produit)
     
-    def can_delede(self,produit : Produit) -> bool:
+    def can_delede(self, produit: Produit) -> bool:
         return self.inventaire_bdl.can_delede(produit)
     
     def get_products(self) -> dict[Produit, int]:
         return self.inventaire_bdl.get_products()
+
+    # Méthodes pour gérer le nom du process
+    def get_name(self) -> str:
+        return self.name
+    
+    def set_name(self, name: str) -> None:
+        self.name = name
+
+    # Méthode pour construire l'arbre (tree) du process.
+    def to_tree(self) -> str:
+        # Retourne une représentation simple ; à enrichir dans les classes filles si besoin.
+        return f"{self.name}"
     
     def __repr__(self):
-        return f"Process({self.inventaire_bdl})"
+        return f"Process(name={self.name}, inventory={self.inventaire_bdl})"
     
     def __str__(self):
-        return f"Process: {self.inventaire_bdl}"
+        return f"Process: {self.name} - {self.inventaire_bdl}"
     
     def __eq__(self, other):
-        return isinstance(other, Process) and self.inventaire_bdl == other.inventaire_bdl
+        return isinstance(other, Process) and self.inventaire_bdl == other.inventaire_bdl and self.name == other.name
 
+    def __hash__(self):
+        # On utilise l'identifiant de l'objet pour le hash.
+        return id(self)
     
 
 if __name__ == "__main__":
@@ -68,4 +83,3 @@ if __name__ == "__main__":
     
     print(proc.is_empty(prod))
     print(proc.get_quantity(prod))
-    

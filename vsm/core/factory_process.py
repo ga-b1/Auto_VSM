@@ -10,21 +10,19 @@ SECURE_DELETE = True
 
 class Facory_Process(Process):
 
-    def __init__(self, process_time : float, time_variability : float, quality : float):
+    def __init__(self, name: str, process_time: float, time_variability: float, quality: float):
         """
-        Permet de creer un procees qui avec des produit (defini via la nomenclaure)
-        crée d'autre en un temps donnée process_time et avec une efficacité
-        
-        limitation connue : impossible d'avoir un produit en in et en out 
+        Permet de creer un process ayant un nom, qui avec des produits (définis via la nomenclature)
+        crée d'autres en un temps donné process_time et avec une efficacité.
+        Limitation connue : impossible d'avoir un produit en in et en out.
         """
         super().__init__()
+        self.name = name                   # nouvel attribut
         self.process_time = process_time
         self.time_variability = time_variability
         self.quality = quality
-        
-        self.nomenclature : dict[Produit,int] = {}
-        
-        #nomenclaure : négatif => produit utile pour fabriqué; Positif => produit fabriqué
+        self.nomenclature : dict[Produit, int] = {}
+        # nomenclature : négatif => produit utile pour fabriquer; positif => produit fabriqué
     
     
     def set_nomenclature_produit(self,produit : Produit, qte : int) -> bool:
@@ -116,15 +114,15 @@ class Facory_Process(Process):
         return self.calcul_process_time()
     
     def __repr__(self):
-        # Affiche les attributs spécifiques de la factory process
-        return (f"{self.__class__.__name__}(process_time={self.process_time}, "
+        # Inclut le nom dans l'affichage
+        return (f"{self.__class__.__name__}(name={self.name}, process_time={self.process_time}, "
                 f"time_variability={self.time_variability}, quality={self.quality}, "
                 f"nomenclature={self.nomenclature})")
                 
     def __str__(self):
-        # Crée une représentation de la nomenclature en utilisant str(product) pour chaque produit.
+        # Crée une représentation incluant le nom et affiche la nomenclature avec le __str__ de chaque produit
         nomenclature_str = ", ".join([f"{str(prod)}: {qte}" for prod, qte in self.nomenclature.items()])
-        texte = f"""Factory Process:
+        texte = f"""Factory Process: {self.name}
         Process time: {self.process_time}
         Time variability: {self.time_variability}
         Quality: {self.quality}
@@ -135,7 +133,7 @@ class Facory_Process(Process):
                 
 
 if __name__ == "__main__":
-    factory = Facory_Process(process_time = 10, time_variability = 1, quality = 1)
+    factory = Facory_Process(name="FabriqueA", process_time=10, time_variability=1, quality=1)
     print(factory)
 
     prod1 = Produit()
