@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from inventory_management import Inventaire
 from product_mangement import Produit
 
-@dataclass
+
 class Process:
     """Permet de creer un process qui est la base pour factory_process et storage_process
     """
@@ -46,6 +46,7 @@ class Process:
     def __eq__(self, other):
         return isinstance(other, Process) and self.inventaire_bdl == other.inventaire_bdl
 
+    
 
 if __name__ == "__main__":
     proc = Process()

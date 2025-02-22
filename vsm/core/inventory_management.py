@@ -48,7 +48,10 @@ class Inventaire:
         return f"Inventaire({self.products})"
 
     def __str__(self):
-        return f"Inventaire: {self.products}"
+        text = "Inventaire:\n"
+        for produit, qte in self.products.items():
+            text += f"{produit.id}: {qte}\n"
+        return text
     
     def __eq__(self, other):
         return isinstance(other, Inventaire) and self.products == other.products
@@ -99,13 +102,3 @@ if __name__ == "__main__":
     print(len(inv))
     print(prod in inv)
     print([p for p in inv])
-    print(inv[prod])
-    inv[prod] = 5
-    print(inv[prod])
-    del inv[prod]
-    print(inv)
-    print(bool(inv))
-    inv.add_product(prod)
-    print(inv)
-
-        
